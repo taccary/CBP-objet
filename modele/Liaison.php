@@ -2,70 +2,58 @@
 
 class Liaison {
     private $code;
-    private $codeSecteur;
+    private $secteur;
     private $distance;
-    private $idPortDepart;
-    private $idPortArrivee;
+    private $portDepart;
+    private $portArrivee;
     
-    public function __construct($donnees) 
+    public function __construct($code, $secteur, $distance, $portDepart, $portArrivee) 
     {
-        $this->hydrate($donnees);
+        $this->code = $code;
+        $this->secteur = $secteur;
+        $this->distance = $distance;
+        $this->portDepart = $portDepart;
+        $this->portArrivee = $portArrivee;
     }
 
-    public function hydrate(array $donnees)
-    {
-        foreach ($donnees as $key => $value)
-        {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $method = 'set'.ucfirst($key);
-                
-            // Si le setter correspondant existe.
-            if (method_exists($this, $method))
-            {
-            // On appelle le setter.
-            $this->$method($value);
-            }
-        }
-    }
-    
     public function getCode() {
         return $this->code;
     }
 
-    public function getCodeSecteur() {
-        return $this->codeSecteur;
+    public function getSecteur() {
+        return $this->secteur;
     }
 
     public function getDistance() {
         return $this->distance;
     }
 
-    public function getIdPortDepart() {
-        return $this->idPortDepart;
+    public function getportDepart() {
+        return $this->portDepart;
     }
 
-    public function getIdPortArrivee() {
-        return $this->idPortArrivee;
+    public function getportArrivee() {
+        return $this->portArrivee;
     }
 
     public function setCode($code): void {
         $this->code = $code;
     }
 
-    public function setCodeSecteur($codeSecteur): void {
-        $this->codeSecteur = $codeSecteur;
+    public function setSecteur($secteur): void {
+        $this->secteur = $secteur;
     }
 
     public function setDistance($distance): void {
         $this->distance = $distance;
     }
 
-    public function setIdPortDepart($idPortDepart): void {
-        $this->idPortDepart = $idPortDepart;
+    public function setportDepart($portDepart): void {
+        $this->portDepart = $portDepart;
     }
 
-    public function setIdPortArrivee($idPortArrivee): void {
-        $this->idPortArrivee = $idPortArrivee;
+    public function setportArrivee($portArrivee): void {
+        $this->portArrivee = $portArrivee;
     }
 
 }

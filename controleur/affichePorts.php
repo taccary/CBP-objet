@@ -3,7 +3,7 @@ if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     $racine = "..";
 }
 
-require_once "$racine/modele/PortManager.php";
+require_once("$racine/modele/PortManager.php");
     
 $titre = "Liste des ports";
 
