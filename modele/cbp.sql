@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 01 sep. 2020 à 13:34
+-- Généré le :  Dim 08 nov. 2020 à 17:10
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.3.12
 
@@ -32,6 +32,7 @@ DROP TABLE IF EXISTS `bateau`;
 CREATE TABLE IF NOT EXISTS `bateau` (
   `id` tinyint(3) UNSIGNED NOT NULL,
   `nom` varchar(100) NOT NULL,
+  `photo` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -39,12 +40,12 @@ CREATE TABLE IF NOT EXISTS `bateau` (
 -- Déchargement des données de la table `bateau`
 --
 
-INSERT INTO `bateau` (`id`, `nom`) VALUES
-(1, 'Kor\'Ant'),
-(2, 'Ar Solen'),
-(3, 'Al\'xi'),
-(4, 'Luce isle'),
-(5, 'Maëllys');
+INSERT INTO `bateau` (`id`, `nom`, `photo`) VALUES
+(1, 'Kor\'Ant', 'images/bateaux/korAnt.jpg'),
+(2, 'Ar Solen', 'images/bateaux/ArSolen.jpg'),
+(3, 'Al\'xi', 'images/bateaux/alXi.jpg'),
+(4, 'Luce isle', 'images/bateaux/luceIsle.jpg'),
+(5, 'Maëllys', 'images/bateaux/maellys.jpg');
 
 -- --------------------------------------------------------
 
@@ -362,6 +363,11 @@ CREATE TABLE IF NOT EXISTS `traversee` (
 --
 
 INSERT INTO `traversee` (`num`, `date`, `heure`, `codeLiaison`, `idBateau`) VALUES
+(401197, '2020-07-10', '07:45:00', 11, 1),
+(401198, '2020-07-10', '09:15:00', 11, 2),
+(401199, '2020-07-10', '10:50:00', 11, 3),
+(401200, '2020-07-10', '12:15:00', 16, 4),
+(401201, '2020-07-10', '14:15:00', 16, 5),
 (541197, '2020-07-10', '07:45:00', 15, 1),
 (541198, '2020-07-10', '09:15:00', 15, 2),
 (541199, '2020-07-10', '10:50:00', 15, 3),

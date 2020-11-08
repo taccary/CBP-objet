@@ -8,21 +8,21 @@ class SecteurManager extends Manager
     public function get($id) //instancie un objet secteur
     {
         $id = (int) $id;
-        $q = $this->dbConnect()->query('SELECT id, nom FROM secteur WHERE id = '.$id);
+        $q = $this->getPDO()->query('SELECT id, nom FROM secteur WHERE id = '.$id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
-        return new Secteur($donnees);
+        return new Secteur($donnees['id'], $donnees['nom']);
     }
   
     public function getList() //instancie une collection d'objets secteurs
     {
         $secteurs = [];
-        $q = $this->dbConnect()->query('SELECT id, nom FROM secteur ORDER BY nom');
+        $q = $this->getPDO()->query('SELECT id, nom FROM secteur ORDER BY nom');
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
-            $secteurs[$donnees['id']] = new Secteur($donnees);
+            $secteurs[$donnees['id']] = new Secteur($donnees['id'], $donnees['nom']);
         }
         return $secteurs;
     }
-   
     
 }
+?>

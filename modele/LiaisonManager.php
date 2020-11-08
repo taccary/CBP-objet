@@ -14,7 +14,7 @@ class LiaisonManager extends Manager
         $portManager = new PortManager(); // Création d'un objet manager de port
         $secteurManager = new SecteurManager(); // Création d'un objet manager de secteur
 
-        $q = $this->dbConnect()->query('SELECT * FROM liaison WHERE id = '.(int) $id);
+        $q = $this->getPDO()->query('SELECT * FROM liaison WHERE id = '.(int) $id);
         $donnees = $q->fetch(PDO::FETCH_ASSOC);
         $portDepart = $portManager->get($donnees['idPortDepart']) ;
         $portArrivee = $portManager->get($donnees['idPortArrivee']) ;
@@ -27,15 +27,14 @@ class LiaisonManager extends Manager
     {
         $portManager = new PortManager(); // Création d'un objet manager de port
         $secteurManager = new SecteurManager(); // Création d'un objet manager de secteur
-        $secteurs = $secteurManager->getList(); // construction collection secteurs ?
-        $ports = $portManager->getList(); // construction collection ports ?
+        $secteurs = $secteurManager->getList(); // construction collection secteurs
+        $ports = $portManager->getList(); // construction collection ports
 
         $liaisons = [];
-        $q = $this->dbConnect()->query('SELECT * FROM liaison ORDER BY codeSecteur');
+        $q = $this->getPDO()->query('SELECT * FROM liaison ORDER BY codeSecteur');
 
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
-            // remplacer par recherche dans les collections
             $portDepart = $ports[$donnees['idPortDepart']] ; // on va cherche l'objet port dans la collection à la clé $donnees['idPortDepart']
             $portArrivee = $ports[$donnees['idPortArrivee']] ;
             $secteur = $secteurs[$donnees['codeSecteur']] ;
@@ -47,16 +46,16 @@ class LiaisonManager extends Manager
 
     public function getListBySecteur($secteur) // on passe la référence de l'objet secteur
     {
+
         $portManager = new PortManager(); // Création d'un objet manager de port
         $secteurManager = new SecteurManager(); // Création d'un objet manager de secteur  
-        $ports = $portManager->getList(); // construction collection ports ?
+        $ports = $portManager->getList(); // construction collection ports 
 
         $liaisons = [];
-        $q = $this->dbConnect()->query('SELECT * FROM liaison WHERE codeSecteur = '.(int) $secteur->getId());
+        $q = $this->getPDO()->query('SELECT * FROM liaison WHERE codeSecteur = '.(int) $secteur->getId());
 
         while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
         {
-            // remplacer par recherche dans les collections
             $portDepart = $ports[$donnees['idPortDepart']] ; // on va cherche l'objet port dans la collection à la clé $donnees['idPortDepart']
             $portArrivee = $ports[$donnees['idPortArrivee']] ;
             $secteur = $secteur ;
@@ -67,3 +66,5 @@ class LiaisonManager extends Manager
     }
 
 }
+
+?>

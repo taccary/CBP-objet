@@ -2,10 +2,10 @@
 
 class Liaison {
     private $code;
-    private $secteur;
+    private $secteur; // référence vers un objet secteur
     private $distance;
-    private $portDepart;
-    private $portArrivee;
+    private $portDepart; // référence vers un objet port
+    private $portArrivee; // référence vers un objet port
     
     public function __construct($code, $secteur, $distance, $portDepart, $portArrivee) 
     {
@@ -57,3 +57,4 @@ class Liaison {
     }
 
 }
+?>

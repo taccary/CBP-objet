@@ -1,5 +1,5 @@
 <?php
-  //var_dump($ports);
+  // var_dump($ports);
 ?>
   <h1><?= $titre ?></h1>
   <table class="table">

@@ -4,25 +4,10 @@ class Secteur {
     private $id;
     private $nom;
     
-    public function hydrate(array $donnees)
-    {
-        foreach ($donnees as $key => $value)
-        {
-            // On récupère le nom du setter correspondant à l'attribut.
-            $method = 'set'.ucfirst($key);           
-            // Si le setter correspondant existe.
-            if (method_exists($this, $method))
-            {
-            // On appelle le setter.
-            $this->$method($value);
-            }
-        }
+    public function __construct($id, $nom) {
+        $this->id = $id;
+        $this->nom = $nom;
     }
-    
-    public function __construct($donnees) {
-        $this->hydrate($donnees);
-    }
-    
     
     public function getId() {
         return $this->id;
@@ -40,6 +25,6 @@ class Secteur {
         $this->nom = $nom;
     }
 
-
-
 }
+
+?>

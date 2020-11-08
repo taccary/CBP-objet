@@ -1,16 +1,6 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of Manager
- *
- * @author hugo
- */
 class Manager 
 {
     protected function dbConnect()
@@ -33,10 +23,16 @@ class Manager
         }
     }
 
-    /*private function dbConnect()
+    // Return the current PDO if exists or create one otherwise
+    protected function getPDO() 
     {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
-        return $db;
-    }*/
+        static $pdo = null;
+        if ($pdo == null) {
+            $pdo = $this->dbConnect();
+        }
+        return $pdo;
+    }
     
 }
+
+?>

@@ -2,12 +2,12 @@
 if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     $racine = "..";
 }
-/*include_once "$racine/modele/bd.liaison.inc.php";*/
 
 require_once("$racine/modele/LiaisonManager.php");
-require_once("$racine/modele/Liaison.php");
 $liaisonManager = new LiaisonManager(); // Création d'un objet
 $secteurManager = new secteurManager(); // Création d'un objet
+
+// $liaisons = $liaisonManager->getList();
 
 if (isset($_GET['id'])){
     $idSecteur = $_GET['id'];
@@ -22,9 +22,6 @@ if (isset($_GET['id'])){
         $liaisonsSecteur[$secteur->getId()] = $liaisonManager->getListBySecteur($secteur); // Appel d'une fonction de cet objet
     }
 }
-
-
-
 
 // appel du script de vue qui permet de gerer l'affichage des donnees
 include "$racine/vue/header.php";
