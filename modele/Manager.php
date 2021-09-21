@@ -3,6 +3,8 @@
 
 class Manager 
 {
+    private static $pdo = null;
+    
     protected function dbConnect()
     {
         $login = "root";
@@ -26,11 +28,11 @@ class Manager
     // Return the current PDO if exists or create one otherwise
     protected function getPDO() 
     {
-        static $pdo = null;
-        if ($pdo == null) {
-            $pdo = $this->dbConnect();
+        if(!self::$pdo)
+        {
+            self::$pdo = $this->dbConnect();
         }
-        return $pdo;
+        return self::$pdo;
     }
     
 }
