@@ -7,10 +7,7 @@ class Manager
     
     protected function dbConnect()
     {
-        $login = "root";
-        $mdp = "";
-        $bd = "cbp";
-        $serveur = "localhost";
+        require_once 'infoBDD.inc.php';
 
         try
         {

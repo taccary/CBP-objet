@@ -19,8 +19,18 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `cbp`
+-- Base de données :  `oceane`
 --
+
+DROP DATABASE IF EXISTS `oceane`;
+CREATE DATABASE IF NOT EXISTS `oceane`
+CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+CREATE USER 'oceane-web'@'localhost' IDENTIFIED BY 'oceane-intra';
+
+GRANT ALL ON oceane.* TO 'oceane-web'@'localhost' ;
+
+USE `oceane`;
 
 -- --------------------------------------------------------
 
